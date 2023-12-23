@@ -8,7 +8,7 @@ Error handling:
 - invalid JSON data
 - error during WS connection
 
-The different solutions contain redundant code for purpose (i.e sw server, constants): make them work separately, under each own venv. 
+The different solutions contain redundant code for purpose (i.e WS server, constants): make them work separately, under each own venv. 
 
 Logging is also added to each solution. 
 

@@ -1,6 +1,7 @@
 import json
 import logging
 import re
+from socket import error as socket_error
 import sys
 import urllib.parse
 from websockets.sync.client import connect as ws_connect
@@ -19,11 +20,16 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
 
     def _call_ws_server(self, json_data):
         ws_server_url = urllib.parse.urljoin(C_WEBSOCKET_SERVER_BASE_URL, C_WEBSOCKET_ECHO_URI)
-        with ws_connect(ws_server_url) as websocket:
+        try:
+            ws_connection = ws_connect(ws_server_url)
             logging.info(f'Connected to WS server: "{ws_server_url}"')
-            websocket.send(json_data)
-            response = websocket.recv()
-            logging.info(f'Received from WS server: "{response}"')
+        except socket_error:
+            logging.error(f'Cannot connect to WS server: "{ws_server_url}"')
+            return
+        ws_connection.send(json_data)
+        response = ws_connection.recv()
+        logging.info(f'Received from WS server: "{response}"')
+        ws_connection.close()
         return response
 
     def do_POST(self):
@@ -42,6 +48,10 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             return
         response = self._call_ws_server(json_data)
+        if not response:
+            self.send_response(503)
+            self.end_headers()
+            return
         self.send_response(200)
         self.end_headers()
         self.wfile.write(response)

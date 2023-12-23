@@ -2,6 +2,7 @@ from flask import Flask, request, Response
 import logging
 import json
 import sys
+from socket import error as socket_error
 import urllib.parse
 from websockets.sync.client import connect as ws_connect
 
@@ -18,11 +19,16 @@ app = Flask(__name__)
 
 def _call_ws_server(json_data):
     ws_server_url = urllib.parse.urljoin(C_WEBSOCKET_SERVER_BASE_URL, C_WEBSOCKET_ECHO_URI)
-    with ws_connect(ws_server_url) as websocket:
+    try:
+        ws_connection = ws_connect(ws_server_url)
         logging.info(f'Connected to WS server: "{ws_server_url}"')
-        websocket.send(json_data)
-        response = websocket.recv()
-        logging.info(f'Received from WS server: "{response}"')
+    except socket_error:
+        logging.error(f'Cannot connect to WS server: "{ws_server_url}"')
+        return
+    ws_connection.send(json_data)
+    response = ws_connection.recv()
+    logging.info(f'Received from WS server: "{response}"')
+    ws_connection.close()
     return response
 
 @app.post(C_API_POST_URI)
@@ -39,6 +45,11 @@ def handle_post():
             status=400,
         )
     ws_response = _call_ws_server(json_data)
+    if not ws_response:
+        return Response(
+            'Cannot connect to WS server!',
+            status=503
+        )
     return Response(
         ws_response,
         status=200
