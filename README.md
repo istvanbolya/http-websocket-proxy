@@ -58,4 +58,24 @@ pip install -r requirements.txt
 ### Run services
 
 - Websocket server: `python3 websocket_server.py`
-- Django server: `python3 manage.py runserver_plus`
+- Django server: `./manage.py runserver_plus`
+
+## Original task description
+
+```    
+# Task description
+Implement a simple standalone application which acts as a http (REST) - websocket gateway.
+The application "translates" the incoming http requests to websocket requests without changing the incoming JSON content: the same JSON is sent to websocket server that was sent by the http client.
+The gateway doesn't change the JSON response of the websocket server - it sends back to the http client without changing it.
+
+# To be implemented
+- Simple application
+  - listening on localhost:8080
+  - exposes an endpoint on POST `/api/ui`
+  - forwards the JSON content to websocket server listening on localhost:8081
+  - sends back the JSON response to the http client without changing it
+- Error handling
+- Logging
+- Tests
+- A README.md file with short description
+```    
