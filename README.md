@@ -23,7 +23,7 @@ source venv/bin/active
 pip install -r requirements.txt
 ```
 
-### Running services
+### Run services
 
 - Websocket server: `python3 websocket_server.py`
 - HTTP server: `python3 http_server.py`
@@ -39,7 +39,7 @@ source venv/bin/active
 pip install -r requirements.txt
 ```
 
-### Running services
+### Run services
 
 - Websocket server: `python3 websocket_server.py`
 - Flask server: `python3 flask_server.py`
@@ -55,7 +55,7 @@ source venv/bin/active
 pip install -r requirements.txt
 ```
 
-### Running services
+### Run services
 
 - Websocket server: `python3 websocket_server.py`
 - Django server: `python3 manage.py runserver_plus`
