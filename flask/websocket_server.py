@@ -1,0 +1,14 @@
+import asyncio
+from websockets.server import serve
+
+from constants import C_WEBSOCKET_SERVER_PORT
+
+async def echo(websocket):
+    async for message in websocket:
+        await websocket.send(message)
+
+async def main():
+    async with serve(echo, 'localhost', C_WEBSOCKET_SERVER_PORT):
+        await asyncio.Future()  # run forever
+
+asyncio.run(main())
