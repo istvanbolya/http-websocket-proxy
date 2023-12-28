@@ -7,7 +7,7 @@ from django.test import SimpleTestCase
 from proxy.tools import _call_ws_server
 
 
-class WSServerCallTests(SimpleTestCase):
+class WSClientTests(SimpleTestCase):
 
     def setUp(self):
         self.sample_json_data = json.dumps({'test': 'JSON'})

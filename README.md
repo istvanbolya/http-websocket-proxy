@@ -30,7 +30,10 @@ pip install -r requirements.txt
 
 ### Tests
 
-TODO
+FYI: the http_server should be started before running the tests: `python3 http_server.py`
+
+- Run: `coverage run -m pytest`
+- Report: `coverage report`
 
 
 ## Flask
@@ -96,15 +99,15 @@ The gateway doesn't change the JSON response of the websocket server - it sends 
 ```    
 
 ## Upgrade possibilities:
-- Better "cannot be connected" error handling to the WS client. Currently it returns None if error
-- Better response codes, instead of static numbers (urllib2.HTTPError.code, http.HTTPStatus)
+- Better "cannot be connected" error handling for the WS client. Currently it returns None if error.
+- Readable response handling, instead of static numbers (using ie. urllib2.HTTPError.code, http.HTTPStatus)
 - Messages to constants, for reusing/translating
-- Handle conn. error during WS client send
+- Handle connection error during WS client send
 - Handle additional errors from WS server, ie. "Internal error"
-- Handle big JSON issue (avoiding possible timeout)
 - Authentication: basic, token, oauth?
 - Flask: make it more "a real app", like in Django. Classes for App, View, URLs, Settings.
 - Support for more URI: 
   - HTTPServer: extend regex, dedicated method for regex route check
   - Flask: additional views/URIs
   - Django: additional views/URLs
+- Handle big JSON issue (avoiding possible timeout?)
