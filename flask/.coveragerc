@@ -1,0 +1,6 @@
+[run]
+omit =
+  *tests*
+  conftest.py
+  constants.py
+  websocket_server.py

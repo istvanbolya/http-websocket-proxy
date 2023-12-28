@@ -50,7 +50,8 @@ pip install -r requirements.txt
 
 ### Tests
 
-TODO
+- Run: `coverage run -m pytest`
+- Report: `coverage report`
 
 
 ## Django
