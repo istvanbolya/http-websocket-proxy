@@ -27,7 +27,6 @@ def _call_ws_server(json_data):
         ws_connection = ws_connect(ws_server_url)
         logging.info(f'Connected to WS server: "{ws_server_url}"')
     except socket_error:
-        print('HERE??')
         logging.error(f'Cannot connect to WS server: "{ws_server_url}"')
         return
     ws_connection.send(json_data)

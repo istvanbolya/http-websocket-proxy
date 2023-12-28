@@ -17,9 +17,7 @@ logging.basicConfig(
     stream=sys.stdout
 )
 
-print(__name__)
 def _call_ws_server(json_data):
-    print('Called??')
     ws_server_url = urllib.parse.urljoin(C_WEBSOCKET_SERVER_BASE_URL, C_WEBSOCKET_ECHO_URI)
     try:
         ws_connection = ws_connect(ws_server_url)
@@ -51,8 +49,6 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_response(400)
             self.end_headers()
             return
-        print(dir(_call_ws_server))
-        print(_call_ws_server.__module__)
         response = _call_ws_server(json_data)
         if not response:
             self.send_response(503)
