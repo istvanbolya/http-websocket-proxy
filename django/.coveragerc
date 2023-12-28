@@ -1,0 +1,11 @@
+[run]
+omit =
+  *migrations*
+  *tests*
+  config/settings/*
+  config/asgi.py
+  config/wsgi.py
+  config/urls.py
+  venv/*
+  manage.py
+  websocket_server.py

@@ -1,7 +1,7 @@
 import asyncio
 from websockets.server import serve
 
-from constants import C_WEBSOCKET_SERVER_PORT
+C_WEBSOCKET_SERVER_PORT = '8081'
 
 async def echo(websocket):
     async for message in websocket:

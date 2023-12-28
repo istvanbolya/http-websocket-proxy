@@ -21,6 +21,7 @@ class TestAPIClient:
             json=json_data
         )
 
+
 if __name__ == '__main__':
     sample_data = {'test': 'JSON'}
     client = TestAPIClient()

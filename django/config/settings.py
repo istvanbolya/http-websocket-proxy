@@ -156,6 +156,11 @@ LOGGING = {
         'propagate': False,
         'level': 'DEBUG',
     },
+    'proxy.tools': {
+        'handlers': ['console'],
+        'propagate': False,
+        'level': 'DEBUG',
+    },
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
