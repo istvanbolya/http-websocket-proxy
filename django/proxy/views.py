@@ -25,5 +25,5 @@ class ProxyView(View):
             return HttpResponse(error_msg, status=400)
         ws_response = _call_ws_server(raw_body)
         if not ws_response:
-            return HttpResponse('Cannot connect to WS server!', status=503)
+            return HttpResponse('No response from WS server!', status=503)
         return HttpResponse(ws_response, status=200)
