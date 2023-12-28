@@ -32,7 +32,7 @@ class TestHTTPServer(TestCase):
         response = requests.post(self.api_url,
                                  json=json.dumps(self.sample_data)
                                  )
-        assert response.status_code == 503
+        assert response.status_code == 200
 
     # TODO: fix test
     @patch('http_server._call_ws_server')
