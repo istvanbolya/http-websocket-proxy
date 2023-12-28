@@ -19,7 +19,7 @@ class ProxyViewTest(SimpleTestCase):
         assert response.status_code == 400
 
     @patch('proxy.views._call_ws_server')
-    def test_post_valid_json_no_ws_connection(self, mocked_ws_call):
+    def test_post_valid_json_no_ws_server_connection(self, mocked_ws_call):
         mocked_ws_call.return_value = None
         response = self.api_client.post('/api/ui/',
                                         json.dumps(self.sample_data),
@@ -27,7 +27,7 @@ class ProxyViewTest(SimpleTestCase):
         assert response.status_code == 503
 
     @patch('proxy.views._call_ws_server')
-    def test_post_valid_json_ws_connection_up(self, mocked_ws_call):
+    def test_post_valid_json_ws_server_connection_up(self, mocked_ws_call):
         mocked_ws_call.return_value = json.dumps(self.sample_data)
         response = self.api_client.post('/api/ui/',
                                         json.dumps(self.sample_data),
