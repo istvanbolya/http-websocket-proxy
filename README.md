@@ -28,6 +28,10 @@ pip install -r requirements.txt
 - Websocket server: `python3 websocket_server.py`
 - HTTP server: `python3 http_server.py`
 
+### Tests
+
+TODO
+
 
 ## Flask
 
@@ -44,6 +48,10 @@ pip install -r requirements.txt
 - Websocket server: `python3 websocket_server.py`
 - Flask server: `python3 flask_server.py`
 
+### Tests
+
+TODO
+
 
 ## Django
 
@@ -59,6 +67,12 @@ pip install -r requirements.txt
 
 - Websocket server: `python3 websocket_server.py`
 - Django server: `./manage.py runserver_plus`
+
+### Tests
+
+- Run: `coverage run --source='.' -m pytest`
+- Report: `coverage report`
+
 
 ## Original task description
 
