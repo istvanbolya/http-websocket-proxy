@@ -12,7 +12,7 @@ class ProxyViewTest(SimpleTestCase):
 
     def test_get_not_implemented(self):
         response = self.api_client.get('/api/ui/')
-        assert response.status_code == 503
+        assert response.status_code == 501
 
     def test_post_invalid_json(self):
         response = self.api_client.post('/api/ui/')

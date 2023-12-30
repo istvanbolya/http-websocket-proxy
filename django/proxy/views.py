@@ -4,7 +4,7 @@ import logging
 from django.http import HttpResponse
 from django.views.generic import View
 
-from proxy.tools import _call_ws_server
+from proxy.ws_client import _call_ws_server
 
 logger = logging.getLogger(__name__)
 
@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 class ProxyView(View):
 
     def get(self, request, *args, **kwargs):
-        return HttpResponse('Not implemented', status=503)
+        return HttpResponse('Not implemented', status=501)
 
     def post(self, *args, **kwargs):
         raw_body = self.request.body

@@ -12,10 +12,52 @@ The different solutions contain redundant code for purpose (i.e WS server, const
 
 Logging is also added to each solution. 
 
+## Django
+
+### Setting up
+
+```    
+python3 -m venv venv
+source venv/bin/active
+pip install -r requirements.txt
+```
+
+### Run services
+
+- Websocket server: `python3 websocket_server.py`
+- Django server: `./manage.py runserver_plus`
+
+### Tests
+
+- Run: `coverage run --source='.' -m pytest`
+- Report: `coverage report`
+
+
+## Flask
+
+### Setting up
+    
+```
+python3 -m venv venv
+source venv/bin/active
+pip install -r requirements.txt
+```
+
+### Run services
+
+- Websocket server: `python3 websocket_server.py`
+- Flask server: `python3 flask_server.py`
+
+
+### Tests
+
+- Run: `coverage run -m pytest`
+- Report: `coverage report`
+
 
 ## BaseHTTPServer
 
-### Setting up (same in every solution)
+### Setting up
 
 ```
 python3 -m venv venv
@@ -33,48 +75,6 @@ pip install -r requirements.txt
 FYI: the http_server should be started before running the tests: `python3 http_server.py`
 
 - Run: `coverage run -m pytest`
-- Report: `coverage report`
-
-
-## Flask
-
-### Setting up (same in every solution)
-    
-```
-python3 -m venv venv
-source venv/bin/active
-pip install -r requirements.txt
-```
-
-### Run services
-
-- Websocket server: `python3 websocket_server.py`
-- Flask server: `python3 flask_server.py`
-
-### Tests
-
-- Run: `coverage run -m pytest`
-- Report: `coverage report`
-
-
-## Django
-
-### Setting up (same in every solution)
-
-```    
-python3 -m venv venv
-source venv/bin/active
-pip install -r requirements.txt
-```
-
-### Run services
-
-- Websocket server: `python3 websocket_server.py`
-- Django server: `./manage.py runserver_plus`
-
-### Tests
-
-- Run: `coverage run --source='.' -m pytest`
 - Report: `coverage report`
 
 
@@ -106,6 +106,7 @@ The gateway doesn't change the JSON response of the websocket server - it sends 
 - Handle additional errors from WS server, ie. "Internal error"
 - Authentication: basic, token, oauth?
 - Flask: make it more "a real app", like in Django. Classes for App, View, URLs, Settings.
+- BAseHTTPServer: custom requesthandler mocking, tests
 - Support for more URI: 
   - HTTPServer: extend regex, dedicated method for regex route check
   - Flask: additional views/URIs

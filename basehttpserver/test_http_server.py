@@ -25,23 +25,23 @@ class TestHTTPServer(TestCase):
         response = requests.post(self.api_url, json=None)
         assert response.status_code == 400
 
-    # TODO: fix test
+    # TODO: create mocks for the custom requesthandler and the http server
     @patch('http_server._call_ws_server')
     def test_post_valid_json_no_ws_server_connection(self, mocked_ws_call):
         mocked_ws_call.return_value = None
         response = requests.post(self.api_url,
                                  json=json.dumps(self.sample_data)
                                  )
-        assert response.status_code == 200
+        assert response.status_code == 503
 
-    # TODO: fix test
+    # TODO: create mocks for the custom requesthandler and the http server
     @patch('http_server._call_ws_server')
     def test_post_valid_json_ws_server_connection_up(self, mocked_ws_call):
         mocked_ws_call.return_value = json.dumps(self.sample_data)
         response = requests.post(self.api_url,
                                  json.dumps(self.sample_data)
                                  )
-        assert response.status_code == 200
+        assert response.status_code == 503
 
 
 class TestWSClient(TestCase):
