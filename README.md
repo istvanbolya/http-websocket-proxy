@@ -18,7 +18,7 @@ Logging is also added to each solution.
 
 ```    
 python3 -m venv venv
-source venv/bin/active
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -39,7 +39,7 @@ pip install -r requirements.txt
     
 ```
 python3 -m venv venv
-source venv/bin/active
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -61,7 +61,7 @@ pip install -r requirements.txt
 
 ```
 python3 -m venv venv
-source venv/bin/active
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
